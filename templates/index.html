@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🌍 Live Sensor Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #f7f9fc;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+        }
+        .blink {
+            animation: blink-animation 1s ease-in-out 1;
+        }
+        @keyframes blink-animation {
+            0% { box-shadow: 0 0 0px rgba(0,0,0,0); }
+            50% { box-shadow: 0 0 20px rgba(0, 123, 255, 0.7); }
+            100% { box-shadow: 0 0 0px rgba(0,0,0,0); }
+        }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <h2 class="text-center mb-5">🌍 Live Environmental Sensor Dashboard</h2>
+
+    <!-- 📊 Live Average Chart -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-body text-center chart-container">
+            <h4 class="mb-4">📊 Avg Temperature & Humidity Per Area (Live)</h4>
+            <canvas id="avgChart" height="100"></canvas>
+        </div>
+    </div>
+
+    <!-- 🔍 Filter Section -->
+    <form method="POST" class="bg-white p-4 rounded shadow-sm mb-5">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">Select Area:</label>
+                <select name="area" class="form-select" required>
+                    <option value="North">North</option>
+                    <option value="South">South</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Start Date:</label>
+                <input type="date" name="start_date" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">End Date:</label>
+                <input type="date" name="end_date" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Start Time:</label>
+                <input type="time" name="start_time" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">End Time:</label>
+                <input type="time" name="end_time" class="form-control" required>
+            </div>
+
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary px-4">Get Filtered Data</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- 📈 Time Series Graph -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body text-center chart-container">
+            <h4 class="mb-4">📈 Temperature & Humidity Over Time</h4>
+            {% if graph1 %}
+                <img src="data:image/png;base64,{{ graph1 }}" class="img-fluid" alt="Time Series Graph">
+            {% else %}
+                <p class="text-muted">No data available for the selected filters.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- JS for Live Chart Update -->
+<script>
+    const ctx = document.getElementById('avgChart').getContext('2d');
+    let chart;
+
+    async function fetchDataAndUpdateChart() {
+        try {
+            const res = await fetch('/average');
+            const data = await res.json();
+
+            const labels = data.areas;
+            const tempData = data.temperature;
+            const humidData = data.humidity;
+
+            if (!chart) {
+                chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Temperature (°C)',
+                                data: tempData,
+                                backgroundColor: 'rgba(255, 99, 132, 0.5)'
+                            },
+                            {
+                                label: 'Humidity (%)',
+                                data: humidData,
+                                backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            } else {
+                chart.data.labels = labels;
+                chart.data.datasets[0].data = tempData;
+                chart.data.datasets[1].data = humidData;
+                chart.update();
+                ctx.canvas.classList.add('blink');
+                setTimeout(() => ctx.canvas.classList.remove('blink'), 1000);
+            }
+
+        } catch (err) {
+            console.error("Failed to update chart:", err);
+        }
+    }
+
+    fetchDataAndUpdateChart();
+    setInterval(fetchDataAndUpdateChart, 5000); // Every 5 seconds
+</script>
+
+</body>
+</html>
