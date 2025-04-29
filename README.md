@@ -61,13 +61,7 @@ After filtering and processing, the app displays:
 - `sensor_data.xlsx` — Excel file to store all sensor data
 
 ---
+## 🚀 How to Run the Application 1. **Install dependencies** *(if not already installed)* ```bash pip install flask pandas matplotlib kafka-python openpyxl ``` 2. **Open three separate terminals and run the following commands:** **Terminal 1:** ```bash python producer.py ``` **Terminal 2:** ```bash python consumer.py ``` **Terminal 3:** ```bash python app.py ``` 3. **Then, open your browser and visit:** ```bash http://127.0.0.1:5000/ ``` --- ## 📈 Tech Used ```text Python Flask Apache Kafka Pandas Matplotlib Chart.js Bootstrap 5 (Frontend Styling) ``` --- ## 🌟 Thank You!
 
-## 🚀 How to Run
 
-1. Start **Kafka** and **Zookeeper** services on your machine.
 
-2. Install dependencies:
-   ```bash
-   pip install flask pandas matplotlib kafka-python openpyxl
-3.Open separate terminals and run the following commands one by one:
-  2. **Open three separate terminals and run the following commands:** **Terminal 1:** ```bash python producer.py ``` **Terminal 2:** ```bash python consumer.py ``` **Terminal 3:** ```bash python app.py ``` 3. **Then, open your browser and visit:** ```bash http://127.0.0.1:5000/ ``` --- ## 📈 Tech Used ```text Python Flask Apache Kafka Pandas Matplotlib Chart.js Bootstrap 5 (Frontend Styling) ``` --- ## 🌟 Thank You! !
