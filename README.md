@@ -19,7 +19,8 @@ To build a system that:
 
 ✨ Experience the live dashboard in action!  
 
-[▶️ Watch Video](https://drive.google.com/file/d/1lbbNe4jnOeaEC-amoisPeo4yI5rydCI2/view?usp=drive_link)
+[▶️ LiveSensorDashboard Video](https://drive.google.com/file/d/1BGETejhtTfwsCahZP-I10SclmZK7lAVl/view?usp=sharing)
+
 
 ---
 
