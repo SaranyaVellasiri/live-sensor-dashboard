@@ -15,7 +15,7 @@ Displays the data and live charts on a Flask web dashboard.
 🖼️ Project Preview
 ✨ Experience the live dashboard in action! Watch the full video below:
   
-[▶️ Watch Video](./video/🌍 Live Sensor Dashboard.mp4)
+[▶️ Watch Video](./video/LiveSensorDashboard.mp4)
 
 🔢 Inputs
 The system collects the following sensor data:
