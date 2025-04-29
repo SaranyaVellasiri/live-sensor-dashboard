@@ -69,8 +69,8 @@ After filtering and processing, the app displays:
 2. Install dependencies:
    ```bash
    pip install flask pandas matplotlib kafka-python openpyxl
-3.In separate terminals, run the following:
-   ```bash
-   python producer.py
-   python consumer.py
-   python app.py
+3.Open separate terminals and run the following commands one by one:
+
+Terminal 1:
+  ```bash
+python producer.py
