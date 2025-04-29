@@ -70,7 +70,9 @@ After filtering and processing, the app displays:
    ```bash
    pip install flask pandas matplotlib kafka-python openpyxl
 3.Open separate terminals and run the following commands one by one:
-
-Terminal 1:
+ Terminal 1:
+   ```bash
+    python producer.py
+ Terminal 2:
   ```bash
-python producer.py
+python consumer.py
