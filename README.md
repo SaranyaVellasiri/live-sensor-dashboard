@@ -70,9 +70,4 @@ After filtering and processing, the app displays:
    ```bash
    pip install flask pandas matplotlib kafka-python openpyxl
 3.Open separate terminals and run the following commands one by one:
-   **Terminal 1:** ```bash python producer.py ``` 
-   **Terminal 2:** ```bash python consumer.py ``` 
-   **Terminal 3:** ```bash python app.py ``` 
-Then, open your browser and visit: ```bash http://127.0.0.1:5000/ ```   
-📈 Tech Used ```text Python Flask Apache Kafka Pandas Matplotlib Chart.js Bootstrap 5 (Frontend Styling) ``` 
-🌟 Thank You!
+  2. **Open three separate terminals and run the following commands:** **Terminal 1:** ```bash python producer.py ``` **Terminal 2:** ```bash python consumer.py ``` **Terminal 3:** ```bash python app.py ``` 3. **Then, open your browser and visit:** ```bash http://127.0.0.1:5000/ ``` --- ## 📈 Tech Used ```text Python Flask Apache Kafka Pandas Matplotlib Chart.js Bootstrap 5 (Frontend Styling) ``` --- ## 🌟 Thank You! !
