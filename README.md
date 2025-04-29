@@ -74,22 +74,3 @@ After filtering and processing, the app displays:
    python producer.py
    python consumer.py
    python app.py
-4.Open your browser and visit:
-   ```bash
-    http://127.0.0.1:5000/
-📈 Tech Used
-Python
-
-Flask
-
-Apache Kafka
-
-Pandas
-
-Matplotlib
-
-Chart.js
-
-Bootstrap 5 (Frontend Styling)
-
-🌟 Thank You!
