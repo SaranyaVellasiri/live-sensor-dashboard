@@ -17,6 +17,10 @@ Displays the data and live charts on a Flask web dashboard.
   
 [▶️ Watch Video](./video/LiveSensorDashboard.mp4)
 
+
+[▶️ Watch Video on Google Drive](https://drive.google.com/file/d/1BGETejhtTfwsCahZP-I10SclmZK7lAVl/view?usp=drive_link)
+
+
 🔢 Inputs
 The system collects the following sensor data:
 
